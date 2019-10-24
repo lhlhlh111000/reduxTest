@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import todoApp from "../reducer";
 import { View } from "react-native";
 import AddTodo from "../components/AddTodo";
 import VisibleTodoList from "../components/VisibleTodoList";
 import Filter from "../components/Filter";
 import { VisibilityFilters } from "../action";
+import thunk from 'redux-thunk';
 
-let store = createStore(todoApp);
+let store = createStore(todoApp, applyMiddleware(thunk));
 
 export default class ReduxApp extends Component {
 
